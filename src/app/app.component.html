@@ -1,0 +1,50 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <img width="300" src="../assets/img/logo.png">
+  <h1>
+    DEIGH
+  </h1>
+  <h5>Always wear what you want to wear.</h5>
+</div>
+ <h2>Accessories</h2>
+<mat-card>
+  <mat-grid-list cols = "3" rowHeight = "450px" rowLength= "100px">
+  <mat-grid-tile *ngFor="let accessory of accessories">
+
+  <p>
+      <img src="../assets/img/{{accessory.pic}}" width="250px" height="250"/><br>
+      Description: {{accessory.desc}}<br>
+      Price: R{{accessory.price}}<br>
+      Quantity: {{accessory.quantity}}
+      <button mat-flat-button color= "accent" (click)="AddCart(accessory)">Add to Cart</button>
+  </p>
+  
+  </mat-grid-tile>      
+  </mat-grid-list>            
+</mat-card>
+
+<!-- <div *ngFor="let summ of summary">
+  {{summ.quantity}}
+  {{summ.price}}
+
+  Total = R{{quantity * price}}
+</div> -->
+
+<h2>Shopping Cart</h2>
+<mat-card *ngFor="let item of carts">
+ <mat-card-content>
+   <div *ngIf="emptyCart">
+      <h3>Cart Empty!</h3>
+   </div>
+  
+  <img src ="../assets/img/{{item.pic}}" width="250px" height="250"/><br>
+  Quantity: {{item.quantity}}<br>
+  Price: R{{item.price}}
+  <button mat-fab color= "accent" (click)="deleteFromCart(item)"><mat-icon>delete</mat-icon></button>
+
+</mat-card-content>
+      
+</mat-card>
+
+ <p>Total Amount: {{totAmount}}</p>
+<router-outlet></router-outlet>
